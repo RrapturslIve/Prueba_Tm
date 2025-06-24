@@ -1,0 +1,1119 @@
+#welcome-screen { /* Fondo Barquito===================*/
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100dvh; /* Usa el alto real visible del dispositivo */
+  overflow-y: auto;
+  background: url('fondo-bienvenida.jpg') no-repeat center center;
+  background-size: cover;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#welcome-screen::before {
+  content: "";
+  position: fixed; /* Antes estaba absolute, cámbialo a fixed */
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+  pointer-events: none;
+}
+
+#welcome-screen > * {
+  position: relative;
+  z-index: 1;
+}
+/* BARCO - MUSEO ==============================*/
+#welcome-text {
+  position: absolute;
+  bottom: 250px;
+  font-size: 16px;
+  color: white;
+  padding: 0 20px;
+  line-height: 1.5;
+  text-shadow: 1px 1px 4px #000;
+}
+/* LOGOOOOOOO===================================*/
+#welcome-logo {
+  width: 120px;
+  max-width: 60%;
+  margin-top: 60px;
+  margin-bottom: 20px;
+}/* LOGOOOOOOO FIN ===================================*/
+#start-button {/* BOTON COMIENZO ===================================*/ 
+  z-index: 1;
+  padding: 16px 32px;
+  font-size: 18px;
+  background-color: #1b25b9;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  margin-top: auto;
+  margin-bottom: 150px;
+}
+/*REDES IN =================================*/
+#redes-sociales {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 60px 0;
+}
+
+#redes-sociales a {
+  font-size: 30px;
+  color: #ff4081;
+  text-decoration: none;
+  transition: transform 0.2s, color 0.3s;
+}
+#redes-sociales a:hover {
+  color: #d93670;
+  transform: scale(1.5);
+} /*REDES FIN=====================================*/
+/*MAPA IMAGEN Y FONDO =================================*/
+#imagen-superpuesta {
+  position: absolute;  /* o relative si prefieres */
+  top: 40px; /* mismo alto que el encabezado */
+  height: calc(100vh - 60px);
+  left: 0;
+  padding-top: 70px; 
+  width: 100vw;
+  background-color: rgb(142, 202, 226);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* antes era center */
+  overflow-y: auto;
+  z-index: 1000;
+  padding-bottom: 80px; /* espacio para botones */
+  box-sizing: border-box;
+}/* ------------------------------------------------- */
+#imagen-superpuesta img {
+  max-width: 500px;
+  max-height: 500px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  margin-bottom: 20px;
+}
+
+#imagen-superpuesta .retroceder {
+  position: sticky;
+  bottom: 20px;
+  margin-top: 20px;
+  background-color: #ff4081;
+  color: white;
+  padding: 12px 24px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  z-index: 999;
+}
+
+#imagen-superpuesta .retroceder:hover {
+  background-color: #e73370;
+}
+
+#imagen-superpuesta.hidden {
+  display: none;
+}
+
+/* BOTONES DENTRO DE MAPA=================*/
+#mapa-contenedor {
+  position: relative;
+  width: 360px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+#mapa-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.mapa-btn {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  color: #000000;
+  background-color: #ffffffc5;
+  border: none;
+  border-radius: 10%;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: background 0.2s ease;
+}
+
+/* FINNN*/
+.hidden {
+  display: none !important;
+}
+#app {
+  display: flex;
+  flex-direction: column;
+  height: calc(100dvh - 70px); /* 40px header + 30px footer */
+  overflow-y: auto;
+  padding-top: 10px;
+  padding-bottom: 50px;
+  width: 100vw;  /* 👈 Forzar ancho total de viewport */
+  box-sizing: border-box;
+}
+/*CUADRO DE DIALOGO==========================*/
+#dialogue-box {
+  width: 90%;
+  max-width: 500px;
+  height: 100px;
+  min-height: 80px;
+  background: white;
+  border: 2px solid #000000;
+  border-radius: 12px;
+  padding: 12px 15px;
+  font-size: 18px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 20px auto;
+  box-sizing: border-box;
+  word-break: break-word;
+  line-height: 1.4;
+  box-shadow: 0 5px 9px rgba(0, 0, 0, 0.25); /* 🌟 La sombra */
+}
+
+/*CUADRO DE DIALOGO FIN==========================*/
+#top-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+/* Avatar =============================================== */
+#avatar-container {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  top: 0; left: 0px;
+}
+#aiko-video, #avatar {
+  position: absolute;
+  width: 100%;
+  border-radius: 12px;
+  border: 2px solid #000000;
+}/*Video Oculto =============================*/
+#aiko-video {
+  position: relative;
+  top: 0; left: 0px;
+  opacity: 0;
+  pointer-events: none;
+}/* video reproducir ========================*/
+#aiko-video.playing {
+  opacity: 1;
+  pointer-events: auto;
+}/*Esconder avartar===================================*/
+#avatar.hidden {
+  opacity: 0;
+}
+/* Input + boton para hablar con la ia ===================*/
+#input-area {
+  display: flex;
+  gap: 10px;
+  width: 90%;
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+#userInput {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 16px;
+}
+button {
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: #ff4081;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+/* Animaciones */ 
+.fade {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#avatar-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+/* Boton mapa================================*/
+.btn-imagen {
+  width: auto;
+  height: auto;
+  background-image: url('bton_mapa.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+}
+#avatar-container,
+#boton-imagen-container {
+  width: 155px;
+  height: 145px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#boton-imagen-container button {
+  width: 115%;
+  height: 125%;
+  font-size: 16px;
+  border: 2px solid #ff4081;
+  background-color: #ffffff;
+  color: #00000000;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+  box-shadow: 0 6px 1px rgba(0, 0, 0, 0.15);
+}
+#boton-imagen-container button.active  {  
+  background-color: #004080;
+  color: white;
+  border: none;
+}
+/* Galeria imagenes============================= */
+.item-galeria {
+  display: none;
+  width: 330px;
+  margin: 20px auto;
+  box-sizing: border-box;
+}
+
+.item-galeria.active {
+  display: block;
+}
+
+/* Caja del título =========================================*/
+.titulo-caja {
+  background-color: #f0f0f0;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  color: #003366;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  margin-top: -30px;
+}
+.subtitulo-caja {
+  background-color: #f9f9f9;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-style: italic;
+  text-align: center;
+  margin: 0 auto 10px auto;
+}
+/* Caja de la imagen ============================*/
+.imagen-caja {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 2px solid #000000;
+  border-radius: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
+  box-shadow: 0 6px 5px rgba(0, 0, 0, 0.25); /* 🌟 La sombra */
+}
+.imagen-caja img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none; /* evita que la imagen interfiera con los botones */
+}
+.item-galeria img {
+  width: 100%;
+  max-width: 400px;
+  object-fit: cover;
+  display: block;
+}
+#galeria-controles {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+#galeria-controles button {
+  padding: 8px 14px;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  background-color: #d0d1d1; /* fondo celeste claro */
+  border: 1px solid #aaa;
+  border-bottom: 5px solid #8a8a8a; /* sombra inferior simulando borde */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#galeria-controles button.active {
+  background-color: #1b25b9;
+  color: white;
+  border-color: #1b25b9;
+  border-bottom: 2px solid #5aa3bb;
+  transform: translateY(3px); /* pequeño efecto de presionado */
+}
+/* Botón audio */
+.btn-audio {
+  position: absolute;
+  transform: translateY(10px);
+  right: 8px;
+  background-color: rgba(0, 0, 0, 0.527);
+  border: 1px solid #ffffff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transform: translateY(20%);
+  z-index: 10;
+  outline: none;
+  box-sizing: border-box; 
+}
+/* Prevenir focus que cause movimiento */
+.btn-audio:focus {
+  outline: none;
+}
+/* Botón siguiente (abajo derecha) */
+.btn-subimg {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background-color: rgba(0, 0, 0, 0.527);
+  border: 1px solid #aaa;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+/* Botón retroceso (abajo izquierda) */
+.btn-retroceso {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background-color: rgba(0, 0, 0, 0.527);
+  border: 1px solid #aaa;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: none; /* 🔒 Oculto por defecto */
+}
+/*--------BOTON JUEGO---------------------------*/
+.botones-mapa {
+  margin-top: 20px;
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+#btn-retroceder-superpuesta,
+#btn-iniciar-juego {
+  padding: 10px 20px;
+  bottom: 8px;
+  font-size: 18px;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  background-color: #40c9ff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 22px 0 rgba(255, 255, 255, 0.315),
+              0 4px 0 rgba(0,0,0,0.2);
+  text-shadow: 1px 2px 1.5px rgba(0, 0, 0, 0.5);
+  color: rgb(255, 255, 255);
+  position: relative; /* ✅ Para que se desplacen con el mapa */
+  transition: background 0.2s ease;
+}
+#btn-retroceder-superpuesta:hover,
+#btn-iniciar-juego:hover {
+  background-color:#308eb3;
+}
+
+#btn-iniciar-juego {
+  padding: 10px 40px;
+}
+.quiz-controles {
+  display: flex;
+  justify-content: center;  /* ✅ Centra horizontalmente */
+  gap: 2rem;                 /* ✅ Espacio entre botones */
+  margin-top: 2rem;
+  flex-wrap: wrap;          /* ✅ Se adapta en pantallas pequeñas */
+}
+
+#btn-retroceder-superpuesta {
+  left: 10px;
+}
+
+#btn-iniciar-juego {
+  right: 20px;
+}
+/* Boton de explicacion juego */
+#btn-iniciar-real-juego {
+  background-color: hsl(184, 100%, 40%);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 22px 0 rgba(255, 255, 255, 0.315),
+              0 4px 0 rgba(0,0,0,0.2);
+  text-shadow: 1px 2px 1.5px rgba(0, 0, 0, 0.5);
+  border: 1px solid #000000;
+  transition: background 0.2s ease;
+}
+#btn-iniciar-real-juego:hover {
+  background-color:rgb(0, 90, 97);
+}
+
+/*-------------------- JUEGO-------------------------------*/
+#pantalla-juego {
+  position: absolute;
+  overflow-y: auto;
+  top: 0; left: 0;
+  width: 100%;
+  height: 101vh;
+  background: #1b75ca 50%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#pregunta-wrapper {
+  transform: translateY(-40px); /* Ahora el desplazamiento va aquí */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#juego-pregunta {
+  position: relative;
+  background-color: #ffffff;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 15px 20px;
+  font-size: 18px;
+  color: #333;
+  text-align: center;
+  width: 300px;
+  height: auto;
+  z-index: 1;
+  overflow: hidden;
+  transform-origin: center;
+}
+
+#juego-pregunta::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg,
+    #ff4081, #ffcc00, #40c4ff, #ff4081);
+  background-size: 300% 300%;
+  animation: lucesBrillantes 4s linear infinite;
+  z-index: -1;
+  border-radius: 14px;
+  filter: blur(5px);
+}
+
+@keyframes lucesBrillantes {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+/* Botones dentro del juego =========================================*/
+#btn-salir-juego {
+  position: relative;
+  bottom: -40px;
+  width: 150px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #000000;
+  background-color: #ff4081;
+  color: white;
+  left: 10px;
+  box-shadow: inset 0 22px 0 rgba(255, 255, 255, 0.199),
+              0 4px 0 rgba(0,0,0,0.2);
+  text-shadow: 1px 2px 1.5px rgba(0, 0, 0, 0.5);
+  color: rgb(255, 255, 255);
+  transition: background 0.2s ease;
+}
+#btn-retroceder {
+  position: relative;
+  bottom: 45px;
+  width: 150px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #000000;
+  background-color: #ff4081;
+  color: white;
+  cursor: pointer;
+  box-shadow: inset 0 22px 0 rgba(255, 255, 255, 0.199),
+              0 4px 0 rgba(0,0,0,0.2);
+  text-shadow: 1px 2px 1.5px rgba(0, 0, 0, 0.5);
+  color: rgb(255, 255, 255);
+  transition: background 0.2s ease;
+  transform: translateX(20px);
+  float: left;
+}
+#juego-container img {
+  width: 300px;
+  height: 250px;
+  object-fit: contain;
+  margin: 0 auto 20px auto; /* ⬅️ esto centra horizontalmente */
+  display: block;           /* ⬅️ necesario para que `margin: auto` funcione */
+}
+#fondo-opciones {
+  background: linear-gradient(to bottom, #04294e, #0a3d79);
+  padding: 5px;
+  margin: 20px auto;
+  width: 100vw;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  position: relative; /* permite posicionar otras cosas dentro si necesitas */
+  z-index: 0;
+  transform: translateY(-60px); /* Súbelo 40px */
+}
+#juego-opciones {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;     /* Centra los botones horizontalmente */
+  gap: 8px;               /* Espaciado entre botones */
+  margin-top: -10px;
+  margin-bottom: 35px; /* ⬅️ Esto separa de los botones de abajo */
+  transform: translateY(20px);
+}
+#quiz-navegacion {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.opcion-boton {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.4s forwards;
+  padding: 12px 20px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 1px;
+    min-width: 200px;
+    background-color: #00a2ff;
+    box-shadow: inset 0 22px 0 rgba(255, 255, 255, 0.1),
+                0 4px 0 rgba(0,0,0,0.3);
+    color: white;
+    text-shadow:
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px  1px 0 #000,
+      1px  1px 0 #000; /* efecto borde negro completo */
+  border: 1px solid #000;
+  border-radius: 8px;
+  cursor: pointer;
+}
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+#juego-feedback {
+  position: relative;
+  transform: translateY(-30px); /* Súbelo 30px */
+  margin-top: 10px; /* Ajusta o quita según convenga */
+  text-align: center; /* Centrar texto, opcional */
+  font-weight: bold; /* Para que destaque más */
+  font-size: 20px; /* Ajusta tamaño si quieres */
+}
+.background-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100dvh; /* Usa el alto real visible del dispositivo */
+  max-height: 100dvh;
+  overflow-y: auto;
+  background: url('fondo.jpg') no-repeat center center fixed;
+  background-size: cover;
+  opacity: 1; /* controla la opacidad aquí (0 a 1) */
+  z-index: -1;  /* para que quede detrás del contenido */
+}
+/* PANTALLA AL FINAL DEL JUEGO=======================================================*/
+#pantalla-final {
+  text-align: center;
+  padding: 30px;
+}
+
+#pantalla-final h2 {
+  color: #2afc17;
+  font-size: 30px;
+  margin-bottom: 100px;
+}
+#mensaje-extra {
+  font-size: 25px;
+  color: #eeff00;
+  margin-bottom: 60px; /* espacio antes del botón */
+}
+#mensaje-extra2 {
+  font-size: 30px;
+  color: #eeff00;
+  margin-bottom: 60px; /* espacio antes del botón */
+}
+
+#btn-siguiente-quiz {
+  position: relative;
+  bottom: 15px;
+  padding: 10px 20px;
+  right: -16px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #000000;
+  background-color: #ff4081;
+  box-shadow: inset 0 22px 0 rgba(255, 255, 255, 0.199),
+              0 4px 0 rgba(0,0,0,0.2);
+  text-shadow: 1px 2px 1.5px rgba(0, 0, 0, 0.5);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  float: right;
+
+}
+
+/*-------------------FIN Juego----------------------------*/
+body {
+  font-family: 'Arial';
+  margin: 0;
+  padding: 0;
+  padding-top: 35px;
+  padding-bottom: 40px;
+  height: 100vh;
+  overflow: hidden;
+  background: rgb(0, 0, 0); /* fallback */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;  /* necesario */
+  overflow-x: hidden; /* ✅ evita que cualquier cosa saque el scroll horizontal */
+} 
+/* Encabezado ===========================*/
+#fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-color: #1b25b9;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  font-size: 18px;
+  z-index: 10000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+/*Pie de pagina======================*/
+#fixed-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background-color: #1b25b9;
+  color: white;
+  text-align: center;
+  line-height: 30px;
+  font-size: 14px;
+  z-index: 10000;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
+}
+/* -------------------------Efectos--------------------------*/
+
+/*1.- Blur DE INICIO*/
+.blur-out{
+  animation:blur-out 0.4s linear both
+} 
+@keyframes blur-out{
+  0%
+    {filter:blur(.01px);}
+  100%
+    {filter:blur(12px);opacity:0}
+  }
+/*2.- Slider tipo rotacion para QUIZ */
+#pantalla-transicion {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  opacity: 0;  /* 🔧 que empiece invisible */
+  z-index: 9999;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+/*3.- Color de botones Quiz Correcta Incorrecta*/
+.correcta {
+  background-color: #28b904 !important; /* verde */
+  color: white;
+}
+.incorrecta {
+  background-color: #f44336 !important; /* rojo */
+  color: white;
+}
+#juego-opciones button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+/*4.- Transicion entre preguntas */
+.scale-down-center {
+  animation: scale-down-center 0.4s forwards;
+}
+@keyframes scale-down-center {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}
+.scale-up-center {
+  animation: scale-up-center 0.4s forwards;
+}
+@keyframes scale-up-center {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+/*5.- efecto de cargando*/
+.loader-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+}
+
+.loader-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #1b25b9;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+/* 6 Corrido hacia adentro*/
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+
+/*-----------------------------Tamaño para tablet------------------------------- */
+@media (min-width: 600px) and (max-width: 1024px) {
+  /* ⬆️ Ajustar fuente base */
+  body {
+    font-size: 20px;
+  }
+
+  /* Pantalla de bienvenida */
+  #welcome-screen {
+    padding: 40px;
+  }
+
+  #welcome-logo {
+    width: 200px;
+  }
+
+  #start-button {
+    font-size: 35px;
+    padding: 20px 40px;
+    margin-bottom: 180px;
+  }
+/* Pantalla principal */
+  #avatar-container {
+    top: 0; left: 0px;
+  }
+  #aiko-video, #avatar {
+    width: 100%;
+  }
+  #avatar-container,
+  #boton-imagen-container {
+   width: 205px;
+   height: 225px;
+  }
+  #boton-imagen-container button {
+   width: 115%;
+   height: 110%;
+   font-size: 16px;
+  }
+  /* Imagen del mapa */
+  #mapa-contenedor {    /*Contenedor de botones*/
+  position: relative;
+  width: 500px;
+  height: 700px;
+
+}
+#imagen-superpuesta img { /*Imagen del mapa*/
+  max-width: 1000px;
+  max-height: 1000px;
+}
+  #mapa-img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .mapa-btn {
+    font-size: 32px;
+    /* padding: 1em;*/
+  }
+
+  /* Juego */
+  #juego-container img {
+    width: 610px;   /* 360px + 250px */
+    height: auto;
+  }
+
+  #juego-pregunta {
+    font-size: 28px;
+    width: 450px;   /* 360px + 250px */
+    height: auto;
+  }
+
+  #juego-opciones button {
+    font-size: 20px;
+    padding: 14px 20px;
+    min-width: 250px;
+  }
+
+  #juego-feedback {
+    font-size: 26px;
+  }
+
+  #btn-retroceder,
+  #btn-siguiente,
+  #btn-siguiente-quiz,
+  #btn-iniciar-juego,
+  #btn-retroceder-superpuesta {
+    font-size: 25px;
+    padding: 8px 24px;
+  }
+  #btn-retroceder{
+  width: 215px;
+  }
+  #btn-siguiente{
+  width: 200px;
+  left: 0px;
+  float: right;
+}
+  #btn-siguiente-quiz{
+  padding: 8px 24px; 
+  }
+
+  /* Imagen caja galería */
+  .imagen-caja {
+    width: 600px;  /* 330 + 250 */
+    height: 100%;
+  }
+  .imagen-caja img {
+  width: 100%;
+  height: 100%;
+  }
+  .item-galeria img {
+  width: 100%;
+  max-width: 600px;
+  object-fit: cover;
+  display: block;
+  }
+  .item-galeria {
+    width: 580px;
+  }
+
+  .titulo-caja, .subtitulo-caja {
+    font-size: 22px;
+  }
+
+  /* Botón audio */
+  .btn-audio,
+  .btn-subimg,
+  .btn-retroceso {
+    font-size: 18px;
+    padding: 10px 14px;
+  }
+  #pantalla-final h2 {
+  font-size: 65px;
+
+  }
+  #mensaje-extra {
+    font-size: 40px;
+  }
+  #mensaje-extra2 {
+    font-size: 35px;
+  }
+}
+
+/* ===== Estilo general ===== */
+body {
+  background-color: rgb(224, 242, 255); /* Azul marino claro */
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+#fixed-header, #fixed-footer {
+  background-color: #003366; /* Azul náutico profundo */
+  color: white;
+  text-align: center;
+
+  font-weight: bold;
+}
+
+/* ===== Cuadro de diálogo ===== */
+#dialogue-box {
+  background-color: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 20px auto;
+  max-width: 600px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  color: #003366;
+}
+
+/* ===== Tarjetas de texto ===== */
+.titulo {
+  font-size: 18px;
+  font-weight: bold;
+  color: #002244;
+  margin-top: 10px;
+}
+
+.subtitulo {
+  font-size: 14px;
+  font-style: italic;
+  color: #666;
+}
+
+/* ===== Contenedor de imagen/mapa ===== */
+.imagen-galeria, #mapa-contenedor img, #galeria-slider img {
+  border-radius: 12px;
+  background-color: white;
+  padding: 6px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===== Botones generales ===== */
+button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s ease;
+}
+
+/* ===== Botones de navegación de secciones ===== */
+#galeria-controles {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+#galeria-controles button {
+  font-size: 18px;
+  padding: 8px 16px;
+  background-color: #ccc;
+}
+
+#galeria-controles button.active {
+  background-color: #004080;
+  color: white;
+}
+
+/* ===== Toques náuticos (puedes agregar íconos opcionales) ===== */
+#fixed-header::before,
+#fixed-footer::after {
+  content: ' ⚓ ';
+}

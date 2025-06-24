@@ -1,0 +1,619 @@
+#welcome-screen { /* Fondo Barquito===================*/
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100dvh; /* Usa el alto real visible del dispositivo */
+  max-height: 100dvh;
+  overflow-y: auto;
+  background: url('fondo-bienvenida.jpg') no-repeat center center;
+  background-size: cover;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#welcome-screen::before {
+  content: "";
+  position: fixed; /* Antes estaba absolute, cámbialo a fixed */
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+  pointer-events: none;
+}
+
+#welcome-screen > * {
+  position: relative;
+  z-index: 1;
+}
+/* BARCO - MUSEO ==============================*/
+#welcome-text {
+  position: absolute;
+  bottom: 250px;
+  font-size: 16px;
+  color: white;
+  padding: 0 20px;
+  line-height: 1.5;
+  text-shadow: 1px 1px 4px #000;
+}
+/* LOGOOOOOOO===================================*/
+#welcome-logo {
+  width: 120px;
+  max-width: 60%;
+  margin-top: 60px;
+  margin-bottom: 20px;
+}/* LOGOOOOOOO FIN ===================================*/
+#start-button {/* BOTON COMIENZO ===================================*/ 
+  z-index: 1;
+  padding: 16px 32px;
+  font-size: 18px;
+  background-color: #1b25b9;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  margin-top: auto;
+  margin-bottom: 150px;
+}
+/*REDES IN =================================*/
+#redes-sociales {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 60px 0;
+}
+#redes-sociales a {
+  font-size: 30px;
+  color: #ff4081;
+  text-decoration: none;
+  transition: transform 0.2s, color 0.3s;
+}
+#redes-sociales a:hover {
+  color: #d93670;
+  transform: scale(1.2);
+} /*REDES FIN=====================================*/
+
+#imagen-superpuesta {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+#imagen-superpuesta img {
+  max-width: 90%;
+  max-height: 70%;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  margin-bottom: 20px;
+}
+
+#imagen-superpuesta .retroceder {
+  padding: 12px 24px;
+  font-size: 18px;
+  background-color: #ff4081;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#imagen-superpuesta .retroceder:hover {
+  background-color: #e73370;
+}
+
+#imagen-superpuesta.hidden {
+  display: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+body {
+  font-family: 'Arial';
+  margin: 0;
+  padding-top: 35px;
+  padding-bottom: 40px;
+  height: 100%;
+  background: rgb(0, 0, 0); /* fallback */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;  /* necesario */
+  overflow-x: hidden; /* ✅ evita que cualquier cosa saque el scroll horizontal */
+} 
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh; /* mejor que 100vh para móviles con teclado */
+  overflow: hidden;
+}
+/*CUADRO DE DIALOGO==========================*/
+#dialogue-box {
+  width: 90%;
+  max-width: 500px;
+  height: 100px;
+  background: white;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 12px 15px;
+  font-size: 18px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 20px auto;
+  box-sizing: border-box;
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+/*CUADRO DE DIALOGO FIN==========================*/
+#top-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+/* Avatar =============================================== */
+#avatar-container {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  top: 0; left: 0px;
+}
+#aiko-video, #avatar {
+  position: absolute;
+  width: 100%;
+  border-radius: 12px;
+  transition: opacity 0.5s ease;
+}/*Video Oculto =============================*/
+#aiko-video {
+  position: relative;
+  top: 0; left: 0px;
+  opacity: 0;
+  pointer-events: none;
+}/* video reproducir ========================*/
+#aiko-video.playing {
+  opacity: 1;
+  pointer-events: auto;
+}/*Esconder avartar===================================*/
+#avatar.hidden {
+  opacity: 0;
+}
+#input-area {
+  display: flex;
+  gap: 10px;
+  width: 90%;
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+#userInput {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+#menu {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+}
+#menu button {
+  padding: 14px;
+  font-size: 16px;
+  background-color: #ffffff;
+  border: 2px solid #ff4081;
+  border-radius: 10px;
+  color: #000000;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+  width: 100%;
+  box-sizing: border-box;
+}
+#menu button:hover {
+  background-color: #ff4081;
+  color: white;
+}
+#back-button button {
+  font-size: 14px;
+  padding: 8px 14px;
+  border: none;
+  background-color: #ff4081;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+#back-button button:hover {
+  background-color: #e73370;
+}
+
+/* Animaciones */
+.fade {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+.hidden {
+  display: none;
+}
+#btn-retroceder-superpuesta,
+#btn-iniciar-juego {
+  position: absolute;
+  bottom: 60px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 2px solid #000000;
+  background-color: #ff4081;
+  color: white;
+  cursor: pointer;
+}
+
+#btn-retroceder-superpuesta {
+  left: 10px;
+}
+
+#btn-iniciar-juego {
+  right: 20px;
+}
+/*--------------- JUEGO-------------------------------*/
+#imagen-superpuesta,
+#pantalla-juego {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 101vh;
+  background: #3d8fdb;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#juego-pregunta {
+  margin-top: 1px;     /* Espacio debajo de la imagen */
+  font-size: 25px;      /* Tamaño de la letra */
+  text-align: center;   /* Centra el texto horizontalmente */
+  font-weight: bold;
+  color: #020202;
+}
+#btn-retroceder,
+#btn-siguiente {
+  position: absolute;
+  bottom: 40px;
+  width: 150px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #000000;
+  background-color: #ff4081;
+  color: white;
+  cursor: pointer;
+}
+
+#btn-retroceder {
+  left: 5px;
+}
+
+#btn-siguiente {
+  right: 5px;
+}
+
+#juego-container img {
+  width: 360px;
+  height: 300px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+#juego-opciones button {
+  display: block;
+  margin: 8px auto;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 2px solid #000000;
+  background-color: #f1df3d;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+#juego-feedback {
+  margin-top: 10px;
+  font-size: 21px;    /* ⬅️ Aumenta este valor según lo grande que lo quieras */
+  font-weight: bold;
+  color: #444;
+  text-align: center;
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100dvh; /* Usa el alto real visible del dispositivo */
+  max-height: 100dvh;
+  overflow-y: auto;
+  background: url('fondo.jpg') no-repeat center center fixed;
+  background-size: cover;
+  opacity: 1; /* controla la opacidad aquí (0 a 1) */
+  z-index: -1;  /* para que quede detrás del contenido */
+}
+
+/* Escalado para tablets y pantallas más grandes */
+@media (min-width: 600px) {
+  #start-button {
+    padding: 40px 80px;
+    font-size: 50px;
+  }
+
+  #welcome-text {
+    font-size: 30px;
+  }
+
+  #dialogue-box {
+    font-size: 25px;
+    padding: auto;
+  }
+
+  #userInput {
+    font-size: 18px;
+    padding: 12px;
+  }
+
+  button {
+    font-size: 18px;
+    padding: 12px 20px;
+  }
+
+  #menu button {
+    font-size: 25px;
+    padding: 18px;
+  }
+
+  #avatar-container {
+    width: 250px;
+  }
+
+  #input-area {
+    max-width: 600px;
+  }
+
+  #menu {
+    max-width: 500px;
+  }
+}
+#avatar-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+#avatar-container,
+#boton-imagen-container {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#boton-imagen-container button {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  border: 2px solid #ff4081;
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+#boton-imagen-container button:hover {
+  background-color: #ff4081;
+  color: white;
+}
+/* Galeria imagenes============================= */
+.item-galeria {
+  display: none;
+  width: 330px;
+  margin: 20px auto;
+  box-sizing: border-box;
+}
+
+.item-galeria.active {
+  display: block;
+}
+
+/* Caja del título =========================================*/
+.titulo-caja {
+  background-color: #f0f0f0;
+  border: 2px solid #ccc;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: -30px;
+  box-sizing: border-box;
+}
+.subtitulo-caja {
+  background-color: #f9f9f9;
+  border: 2px solid #ccc;
+  padding: 10px;
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-style: italic;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  box-sizing: border-box;
+}
+/* Caja de la imagen ============================*/
+.imagen-caja {
+  width: 330px;
+  height: 270px;
+  position: relative;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.imagen-caja img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none; /* evita que la imagen interfiera con los botones */
+}
+.item-galeria img {
+  width: 100%;
+  max-width: 400px;
+  object-fit: cover;
+  display: block;
+}
+#galeria-controles {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#galeria-controles button {
+  padding: 8px 14px;
+  font-size: 16px;
+  background-color: #eee;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#galeria-controles button.active {
+  background-color: #1b25b9;
+  color: white;
+  border-color: #1b25b9;
+}
+/* IMAGEN MAPA PEQUEÑO======================================*/
+.btn-imagen {
+  width: auto;
+  height: auto;
+  background-image: url('mapa.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+}
+/* Botón audio */
+.btn-audio {
+  position: absolute;
+  top: 20%;
+  right: 8px;
+  background-color: rgba(255,255,255,0.9);
+  border: 1px solid #aaa;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transform: translateY(-50%);
+  z-index: 10;
+  outline: none;
+  box-sizing: border-box;
+}
+/* Prevenir focus que cause movimiento */
+.btn-audio:focus {
+  outline: none;
+}
+/* Botón siguiente (abajo derecha) */
+.btn-subimg {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid #aaa;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Botón retroceso (abajo izquierda) */
+.btn-retroceso {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid #aaa;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: none; /* 🔒 Oculto por defecto */
+} /* Encabezado ===========================*/
+#fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-color: #1b25b9;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  font-size: 18px;
+  z-index: 10000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+/*Pie de pagina======================*/
+#fixed-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background-color: #1b25b9;
+  color: white;
+  text-align: center;
+  line-height: 30px;
+  font-size: 14px;
+  z-index: 10000;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
+}
+.opcion-boton {
+  margin: 10px 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1fe069;
+  color: rgb(30, 214, 76);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.opcion-boton:hover {
+  background-color: #2bd141;
+}

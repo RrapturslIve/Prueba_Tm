@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <title>Asistente Virtual - Aiko</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="fixed-header">🎨 Bienvenido al Museo Aiko</div>
+    <div id="fixed-footer">Museo Virtual 2025 ©</div>
+
+  <!-- Pantalla de bienvenida -->
+    <div id="welcome-screen">
+
+      <!-- Logo debajo del encabezado -->
+      <img id="welcome-logo" src="logo.jpg" alt="Logo del museo">
+      <button id="start-button">Comenzar</button>
+      <div id="welcome-text">
+        BARCO - MUSEO
+      </div>
+      <!-- Íconos de redes sociales -->
+      <div id="redes-sociales">
+        <a href="https://www.facebook.com/alex.perez.726095" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com/usuario" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/@usuario" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://twitter.com/usuario" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://tiktok.com/@usuario" target="_blank"><i class="fab fa-tiktok"></i></a>
+      </div>
+  </div>
+
+  <!-- Interfaz principal -->
+  <div id="app" class="hidden">
+    <div class="background-overlay"></div>
+
+    <div id="avatar-row">
+      <div id="avatar-container">
+        <img id="avatar" src="aiko.png" alt="Aiko">
+        <video id="aiko-video" src="aiko_gestos.mp4" preload="auto" muted></video>
+      </div>
+
+      <div id="boton-imagen-container">
+        <button class="btn-imagen" onclick="mostrarImagenSuperpuesta()"></button>
+      </div>
+    </div>
+
+      <!-- Imagen superpuesta oculta -->
+      <div id="imagen-superpuesta" class="hidden">
+        <img src="imagen.jpg" alt="Imagen informativa">
+         <button id="btn-retroceder-superpuesta" onclick="cerrarImagenSuperpuesta()">🔙 Retroceder</button>
+         <button id="btn-iniciar-juego" onclick="iniciarJuego()">🎮 QUIZ</button>
+      </div>  
+
+      <!-- Diálogo -->
+      <div id="dialogue-box">¡Hola! Soy Aiko, su guía virtual. ¿Qué información deseas conocer?</div>
+      
+      <!-- galeria ==========-->
+      <div id="galeria-slider">
+        <div class="item-galeria active" data-index="0">
+        <div class="titulo-caja">1. Otra Obra Destacada</div>
+        <div class="subtitulo-caja">Subtítulo de la obra</div>
+        <div class="imagen-caja" data-index="0" data-step="0">
+          <button class="btn-audio" onclick="reproducirAudio(this)">🔊</button>
+          <button class="btn-subimg" onclick="cambiarSubimagen(this)">▶</button>
+          <button class="btn-retroceso" onclick="retrocederSubimagen(this)">◀</button>
+          <img alt="Obra dinámica">
+        </div>    
+      </div>
+      
+      <div class="item-galeria" data-index="1">
+        <div class="titulo-caja">2. Obra Moderna</div>
+        <div class="subtitulo-caja">Una pieza de arte innovadora</div>
+        <div class="imagen-caja" data-index="1" data-step="0">
+          <button class="btn-audio" onclick="reproducirAudio(this)">🔊</button>
+          <button class="btn-subimg" onclick="cambiarSubimagen(this)">▶</button>
+          <button class="btn-retroceso" onclick="retrocederSubimagen(this)">◀</button>
+          <img alt="Obra dinámica">
+        </div>
+      </div>
+
+      <div class="item-galeria" data-index="2">
+        <div class="titulo-caja">3. Escultura Antigua</div>
+        <div class="subtitulo-caja">Escultura histórica del siglo XVIII</div>
+        <div class="imagen-caja" data-index="2" data-step="0">
+          <button class="btn-audio" onclick="reproducirAudio(this)">🔊</button>
+          <button class="btn-subimg" onclick="cambiarSubimagen(this)">▶</button>
+          <button class="btn-retroceso" onclick="retrocederSubimagen(this)">◀</button>
+          <img alt="Obra dinámica">
+        </div>
+      </div>
+
+
+        <!-- Botones numerados -->
+        <div id="galeria-controles">
+          <button onclick="mostrarImagen(0)">1</button>
+          <button onclick="mostrarImagen(1)">2</button>
+          <button onclick="mostrarImagen(2)">3</button>
+        </div>
+      </div>
+  </div>
+
+     <!-- Pantalla del juego -->
+  <div id="pantalla-juego" class="hidden">
+    <div id="juego-container">
+      <img id="juego-imagen" src="" alt="Imagen pregunta">
+      <h2 id="juego-pregunta"></h2>
+      <div id="juego-opciones"></div>
+      <p id="juego-feedback"></p>
+       <!-- Contenedor para los botones de navegación -->
+      <button id="btn-retroceder" class="retroceder" onclick="cerrarJuegoYVolverImagen()">🔙 Retroceder</button>
+      <button id="btn-siguiente" onclick="cargarPregunta()">➡️ Siguiente</button>
+    </div>
+  </div>
+  
+    <!-- Sonidos -->
+    <audio id="click-sound" src="click.mp3" preload="auto"></audio>
+    <video id="aiko-video" src="aiko_gestos.mp4" preload="auto" muted></video>
+    <audio id="welcome-audio" src="sounds/bienvenida.mp3" preload="auto"></audio>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
